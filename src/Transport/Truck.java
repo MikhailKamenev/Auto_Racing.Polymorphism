@@ -1,6 +1,7 @@
 package Transport;
 
 public class Truck extends Car implements Competing{
+    //добавлен блок по enum
     public enum Capacity {
         N1("до 3.5 тонн"),N2("3.5-12 тонн"),N3("свыше 12 тонн");
         private final String capacity;

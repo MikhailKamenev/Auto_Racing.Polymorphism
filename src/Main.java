@@ -55,7 +55,7 @@ public class Main {
         mihalich.startMoving(neoplan);
         mihalich.stopMoving(neoplan,neoplanTimes);
         mihalich.printInfoDriver(neoplan);
-
+        //блок по enum
         honda.identifyBodyType();
         toyota.identifyBodyType();
         neoplan.setCapacity(Bus.Capacity.LARGE);

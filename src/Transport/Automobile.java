@@ -1,6 +1,7 @@
 package Transport;
 
 public class Automobile extends Car implements Competing{
+    //добавлен блок по enum
     public enum BodyTypes {
         SEDAN("седан"), COUPE("купе"), HATCHBACK("хетчбэк"), WAGON("универсал"), SUV("внедорожник"),
         CROSSOVER("кроссовер"), PICKUP("пикап"), VAN("фургон"), MINIVAN("минивен");

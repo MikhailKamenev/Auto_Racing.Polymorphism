@@ -1,6 +1,7 @@
 package Transport;
 
 public class Bus extends Car implements Competing {
+    //добавлен блок по enum
     public enum Capacity{
         EXTRA_LOW("до 10 мест"),LOW("до 25 мест"),MIDDLE("40-50 мест"),
         LARGE("60-80 мест"),EXTRA_LARGE("100-120 мест");
