@@ -1,8 +1,49 @@
 package Transport;
 
 public class Truck extends Car implements Competing{
+    public enum Capacity {
+        N1("до 3.5 тонн"),N2("3.5-12 тонн"),N3("свыше 12 тонн");
+        private final String capacity;
+
+        Capacity(String capacity) {
+            this.capacity=capacity;
+        }
+
+        public static Capacity identifyCapacity(String capacity) {
+            for (Capacity value : values()) {
+                if (value.getCapacity().equals(capacity)) {
+                    return value;
+                }
+            }
+            return null;
+        }
+        public String getCapacity() {
+            return capacity;
+        }
+    }
+    private Capacity capacity;
     public Truck(String brand, String model, double engineVolume) {
         super(brand, model, engineVolume);
+    }
+
+    public Truck(String brand, String model, double engineVolume, Capacity capacity) {
+        super(brand, model, engineVolume);
+        this.capacity = capacity;
+    }
+
+    public void printCapacity() {
+        if (getCapacity() == null) {
+            System.out.println("У грузовика "+getBrand()+" "+getModel()+" отсутствуют данные о разрешенной грузоподъемности");
+        } else {
+            System.out.println(getBrand()+" "+getModel()+" имеет грузоподъемность "+capacity.getCapacity());
+        }
+    }
+    public void setCapacity(Capacity capacity) {
+        this.capacity = capacity;
+    }
+
+    public Capacity getCapacity() {
+        return capacity;
     }
 
     @Override

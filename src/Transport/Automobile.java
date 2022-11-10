@@ -1,10 +1,50 @@
 package Transport;
 
 public class Automobile extends Car implements Competing{
+    public enum BodyTypes {
+        SEDAN("седан"), COUPE("купе"), HATCHBACK("хетчбэк"), WAGON("универсал"), SUV("внедорожник"),
+        CROSSOVER("кроссовер"), PICKUP("пикап"), VAN("фургон"), MINIVAN("минивен");
 
+        public static BodyTypes identityBodyType(String bodyType) {
+            for (BodyTypes types : values()) {
+                if (types.getBodyType().equals(bodyType)) {
+                    return types;
+                }
+            }
+            return null;
+        }
+        private final String bodyType;
+
+        BodyTypes(String bodyType) {
+            this.bodyType = bodyType;
+        }
+
+        public String getBodyType() {
+            return bodyType;
+        }
+    }
+
+    private BodyTypes bodyType;
 
     public Automobile(String brand, String model, double engineVolume) {
         super(brand, model, engineVolume);
+    }
+
+    public Automobile(String brand, String model, double engineVolume, BodyTypes bodyType) {
+        super(brand, model, engineVolume);
+            this.bodyType = bodyType;
+    }
+
+    public void identifyBodyType() {
+        if (getBodyType() == null) {
+            System.out.println("У автомобиля "+getBrand()+" "+getModel()+" отсутствуют данные о типе кузова");
+        } else {
+            System.out.println("У автомобиля "+getBrand()+" "+getModel()+" тип кузова - "+bodyType.getBodyType());
+        }
+    }
+
+    private BodyTypes getBodyType() {
+        return bodyType;
     }
 
     @Override
