@@ -36,6 +36,11 @@ public class Automobile extends Car implements Competing{
             this.bodyType = bodyType;
     }
 
+    @Override
+    public void doCheck() {
+        super.doCheck();
+    }
+
     public void identifyBodyType() {
         if (getBodyType() == null) {
             System.out.println("У автомобиля "+getBrand()+" "+getModel()+" отсутствуют данные о типе кузова");

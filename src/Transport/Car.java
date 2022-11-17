@@ -106,6 +106,10 @@ public abstract class Car {
         }
     }
 
+    public void doCheck() {
+        System.out.println(getBrand()+" "+getModel()+" check is done");
+    }
+
     public void setBrand(String brand) {
         if (this.brand == "Unknown") {
             this.brand = brand;

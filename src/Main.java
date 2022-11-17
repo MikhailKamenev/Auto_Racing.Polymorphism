@@ -6,15 +6,16 @@ import Transport.Bus;
 import Transport.Car;
 import Transport.Car.RingTime;
 import Transport.Truck;
+import Driver.WrongLicenseException;
 
 public class Main {
     public static void main(String[] args) {
         //Упрощенное приложение для автогонок
 
         //Водители
-        Driver<Automobile> petrovich = new Driver<>("Петрович", 53);
-        BusDriver<Bus> mihalich = new BusDriver<>("Михалыч", 56);
-        TruckDriver<Truck> sergeevich = new TruckDriver<>("Сергеич", 55);
+        Driver<Automobile> petrovich = new Driver<>("Петрович", 53,"B","123456789");
+        BusDriver<Bus> mihalich = new BusDriver<>("Михалыч", 56,"D","987654321");
+        TruckDriver<Truck> sergeevich = new TruckDriver<>("Сергеич", 55,"CE","112233445");
         //Автомобили
         Automobile honda = new Automobile("Honda", "Civic", 2.0);
         Automobile toyota = new Automobile("Toyota", "Corolla", 1.6, Automobile.BodyTypes.SEDAN);
@@ -36,35 +37,69 @@ public class Main {
         RingTime manTimes = man.new RingTime(298.78, 302.24, 300.01);
 
         //какие то проверки работы методов
-        honda.compareToBestRingTime(hondaTimes);
-        honda.maxSpeed();
-        System.out.println(honda);
-        System.out.println(neoplanTimes.getBestRingTime());
-        neoplan.compareToBestRingTime(neoplanTimes);
-        man.compareToBestRingTime(manTimes);
-        System.out.println(manTimes.getBestRingTime());
+//        honda.compareToBestRingTime(hondaTimes);
+//        honda.maxSpeed();
+//        System.out.println(honda);
+//        System.out.println(neoplanTimes.getBestRingTime());
+//        neoplan.compareToBestRingTime(neoplanTimes);
+//        man.compareToBestRingTime(manTimes);
+//        System.out.println(manTimes.getBestRingTime());
+//
+//        sergeevich.startMoving(man);
+//        sergeevich.stopMoving(man,manTimes);
+//        sergeevich.printInfoTruckDriver(man);
+//
+//        petrovich.startMoving(honda);
+//        petrovich.stopMoving(honda,hondaTimes);
+//        petrovich.printInfoDriver(honda);
+//
+//        mihalich.startMoving(neoplan);
+//        mihalich.stopMoving(neoplan,neoplanTimes);
+//        mihalich.printInfoDriver(neoplan);
+//        //блок по enum
+//        honda.identifyBodyType();
+//        toyota.identifyBodyType();
+//        neoplan.setCapacity(Bus.Capacity.LARGE);
+//        neoplan.printCapacity();
+//        ikarus.printCapacity();
+//        scania.printCapacity();
+//        man.printCapacity();
+//        iveco.printCapacity();
+//        iveco.setCapacity(Truck.Capacity.N2);
+//        iveco.printCapacity();
+//
 
-        sergeevich.startMoving(man);
-        sergeevich.stopMoving(man,manTimes);
-        sergeevich.printInfoTruckDriver(man);
+        //исключения
+//        checkDriverLicense(petrovich);
+//        checkBusDriverLicense(mihalich);
+//        checkTrackDriverLicense(sergeevich);
 
-        petrovich.startMoving(honda);
-        petrovich.stopMoving(honda,hondaTimes);
-        petrovich.printInfoDriver(honda);
+        doCheck(man,honda,neoplan);
+    }
 
-        mihalich.startMoving(neoplan);
-        mihalich.stopMoving(neoplan,neoplanTimes);
-        mihalich.printInfoDriver(neoplan);
-        //блок по enum
-        honda.identifyBodyType();
-        toyota.identifyBodyType();
-        neoplan.setCapacity(Bus.Capacity.LARGE);
-        neoplan.printCapacity();
-        ikarus.printCapacity();
-        scania.printCapacity();
-        man.printCapacity();
-        iveco.printCapacity();
-        iveco.setCapacity(Truck.Capacity.N2);
-        iveco.printCapacity();
+    public static void doCheck(Car... cars) {
+        for (Car car : cars) {
+            car.doCheck();
+        }
+    }
+    public static void checkDriverLicense(Driver driver) {
+        try {
+            driver.checkDriverLicense(driver);
+        } catch (WrongLicenseException e) {
+            System.out.println(e.getMessage());
+        }
+    }public static void checkBusDriverLicense(BusDriver busDriver) {
+        try {
+            busDriver.checkDriverLicense(busDriver);
+        } catch (WrongLicenseException e) {
+            System.out.println(e.getMessage());
+        }
+
+    }public static void checkTrackDriverLicense(TruckDriver truckDriver) {
+        try {
+            truckDriver.checkDriverLicense(truckDriver);
+        } catch (WrongLicenseException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
