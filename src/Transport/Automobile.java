@@ -1,5 +1,7 @@
 package Transport;
 
+import Driver.Driver;
+
 public class Automobile extends Car implements Competing{
     //добавлен блок по enum
     public enum BodyTypes {
