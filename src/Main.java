@@ -70,8 +70,8 @@ public class Main {
         mechanicList.addMechanic(vasya);// Проверка что в список механиков нельзя добавить повторяющееся значение
         System.out.println(mechanicList);
 
-        //какие то проверки работы методов
         // Все закомментировал чтобы не мешало при выводе и проверке списков
+        //какие то проверки работы методов
 //        honda.compareToBestRingTime(hondaTimes);
 //        honda.maxSpeed();
 //        System.out.println(honda);
