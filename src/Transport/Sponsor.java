@@ -20,4 +20,9 @@ public class Sponsor {
     public void toSponsor() {
         System.out.printf("Спонсор %s проспонсировал заезд на сумму %d%n", name, sum);
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

@@ -23,4 +23,9 @@ public class Mechanic <C extends Car>{
     public void repair(C c) {
         System.out.printf("Выполнен ремонт автомобиля %s %d", c.getBrand(), c.getModel());
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

@@ -55,12 +55,23 @@ public class Main {
         RingTime neoplanTimes = neoplan.new RingTime(335.43, 365.76, 332.59);
         RingTime manTimes = man.new RingTime(298.78, 302.24, 300.01);
         // какие то методы
-        List<Car> racingCars = List.of(
-                honda,
-                neoplan,
-                man);
+        CarList carList = new CarList();
+        carList.addCar(kamaz);
+        carList.addCar(honda);
+        carList.addCar(honda);// Проверка что в список автомобилей нельзя добавить повторяющееся значение
+        System.out.println(carList);
+        SponsorList sponsorList = new SponsorList();
+        sponsorList.addSponsor(cocaCola);
+        sponsorList.addSponsor(amazon);
+        sponsorList.addSponsor(amazon);// Проверка что в список спонсоров нельзя добавить повторяющееся значение
+        System.out.println(sponsorList);
+        MechanicList mechanicList = new MechanicList();
+        mechanicList.addMechanic(vasya);
+        mechanicList.addMechanic(vasya);// Проверка что в список механиков нельзя добавить повторяющееся значение
+        System.out.println(mechanicList);
 
         //какие то проверки работы методов
+        // Все закомментировал чтобы не мешало при выводе и проверке списков
 //        honda.compareToBestRingTime(hondaTimes);
 //        honda.maxSpeed();
 //        System.out.println(honda);
@@ -98,15 +109,15 @@ public class Main {
 //        checkBusDriverLicense(mihalich);
 //        checkTrackDriverLicense(sergeevich);
 //        doCheck(man,honda,neoplan);
-
-        Garage garage = new Garage();
-        garage.addAutomobile(honda);
-        garage.addTruck(man);
-        garage.service();
-        garage.service();
-        automobileInfo(honda);
-        automobileInfo(neoplan);
-        automobileInfo(man);
+//
+//        Garage garage = new Garage();
+//        garage.addAutomobile(honda);
+//        garage.addTruck(man);
+//        garage.service();
+//        garage.service();
+//        automobileInfo(honda);
+//        automobileInfo(neoplan);
+//        automobileInfo(man);
     }
 
     public static void automobileInfo(Car car) {
