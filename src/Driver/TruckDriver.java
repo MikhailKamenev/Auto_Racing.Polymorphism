@@ -8,8 +8,10 @@ import Transport.Truck;
 public class TruckDriver <BD extends Truck& Competing>{
     private String name;
     private int ageOfDriving;
+    private String licenseCategory;
+    private String licenseNumber;
 
-    public TruckDriver(String name, int ageOfDriving) {
+    public TruckDriver(String name, int ageOfDriving,String licenseCategory,String licenseNumber) {
         if (name == null || name.isEmpty() || name.isBlank()) {
             this.name = "Петрович";
         } else {
@@ -18,7 +20,26 @@ public class TruckDriver <BD extends Truck& Competing>{
         if (ageOfDriving > 0) {
             this.ageOfDriving = ageOfDriving;
         }else {this.ageOfDriving=1;}
+        this.licenseCategory=licenseCategory;
+        this.licenseNumber=licenseNumber;
     }
+    public void checkDriverLicense(TruckDriver truckDriver) throws WrongLicenseException {
+        if (truckDriver.getLicenseCategory() != null && truckDriver.getLicenseCategory().matches("^[A-E]+$")
+                && truckDriver.getLicenseCategory().length() <= 2) {
+            System.out.println("Категория прав водителя " + getName() + " соответствует стандарту.");
+        } else {
+            throw new WrongLicenseException("Неверно указана категория в водительском удостоверении. " +
+                    "Вы можете использовать только латинские заглавные буквы А-Е. " +
+                    "Длина указываемой категории не более 2 символов.");
+        }
+        if (truckDriver.getLicenseNumber().length() == 9 && truckDriver.getLicenseNumber().matches("^[0-9]+$")) {
+            System.out.println("Указанный номер водительского удостоверения соответствует стандарту.");
+        } else {
+            throw new WrongLicenseException("Ошибка в номере водительского удостоверения. " +
+                    "Номер может содержать только цифры и его длина должна быть равна 9 символам.");
+        }
+    }
+
 
     public void startMoving(Truck truck) {
         System.out.println("Занять место водителя в автомобиле "+truck.getBrand()+" "
@@ -64,5 +85,13 @@ public class TruckDriver <BD extends Truck& Competing>{
         if (ageOfDriving > 0) {
             this.ageOfDriving = ageOfDriving;
         }else {this.ageOfDriving=1;}
+    }
+
+    public String getLicenseCategory() {
+        return licenseCategory;
+    }
+
+    public String getLicenseNumber() {
+        return licenseNumber;
     }
 }

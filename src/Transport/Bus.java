@@ -33,6 +33,11 @@ public class Bus extends Car implements Competing {
         this.capacity = capacity;
     }
 
+    @Override
+    public void doCheck() {
+        System.out.println("Для автобуса "+getBrand()+" "+getModel()+" проверка не требуется");
+    }
+
     public void printCapacity() {
         if (getCapacity() == null) {
             System.out.println("У автомобиля "+getBrand()+" "+getModel()+" отсутствуют данные об пассажировместимости.");

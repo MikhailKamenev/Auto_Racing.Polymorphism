@@ -32,6 +32,11 @@ public class Truck extends Car implements Competing{
         this.capacity = capacity;
     }
 
+    @Override
+    public void doCheck() {
+        super.doCheck();
+    }
+
     public void printCapacity() {
         if (getCapacity() == null) {
             System.out.println("У грузовика "+getBrand()+" "+getModel()+" отсутствуют данные о разрешенной грузоподъемности");
@@ -47,7 +52,7 @@ public class Truck extends Car implements Competing{
         return capacity;
     }
 
-    @Override
+    @Override   
     public void startDriving() {
         System.out.println("Попытаться залезть в кабину.");
         System.out.println("Сесть на водительское место. Пристегнуться");

@@ -1,5 +1,7 @@
 package Transport;
 
+import Driver.Driver;
+
 public class Automobile extends Car implements Competing{
     //добавлен блок по enum
     public enum BodyTypes {
@@ -34,6 +36,11 @@ public class Automobile extends Car implements Competing{
     public Automobile(String brand, String model, double engineVolume, BodyTypes bodyType) {
         super(brand, model, engineVolume);
             this.bodyType = bodyType;
+    }
+
+    @Override
+    public void doCheck() {
+        super.doCheck();
     }
 
     public void identifyBodyType() {
